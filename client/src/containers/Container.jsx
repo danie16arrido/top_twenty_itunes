@@ -18,7 +18,8 @@ class Container extends React.Component {
     const jsonString = request.responseText;
     const data = JSON.parse( jsonString );
   
-    this.setState( { topTwentySongs: data } )
+    this.setState( { topTwentySongs: data.feed.entry } )
+    
   }
   request.send();
   }
@@ -26,7 +27,7 @@ class Container extends React.Component {
   render() {
     return (
       <div>
-        <SongsList topXXsongs={ this.state.topTwentySongs }></SongsList>
+        <SongsList topsongs={ this.state.topTwentySongs }></SongsList>
       </div>
     )
   }

@@ -2,14 +2,17 @@ import React from 'react'
 import { SongItem } from './SongItem.jsx'
 
 export const SongsList = ( props ) => {
-  console.log("list", props)
-  // const songsToRender = props.songs.map( ( song, index ) => {
-  //   return <SongItem key={ index } name={ song.name } />
-  // })
+  if( !props.topsongs) return null;
 
+  const songsToRender = props.topsongs.map( ( song, index ) => {
+    return <SongItem key={ index } song={ song } />
+  })
+    
+  
+  
   return(
     <div>
-      <SongItem></SongItem>
+      { songsToRender }
     </div>
   )
 
