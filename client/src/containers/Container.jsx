@@ -2,10 +2,31 @@ import React from 'react'
 import { SongsList } from '../components/SongsList.jsx'
 
 class Container extends React.Component {
+  constructor( props ) {
+    super( props )
+    this.state = {
+      topTwentySongs: []
+    }
+  }
+
+  componentDidMount() {
+  const url = "https://itunes.apple.com/gb/rss/topsongs/limit=20/json"
+  const request = new XMLHttpRequest();
+  request.open( "GET", url );
+  request.onload = () => {
+    if(request.status !== 200) return
+    const jsonString = request.responseText;
+    const data = JSON.parse( jsonString );
+  
+    this.setState( { topTwentySongs: data } )
+  }
+  request.send();
+  }
+
   render() {
     return (
       <div>
-        <SongsList></SongsList>
+        <SongsList topXXsongs={ this.state.topTwentySongs }></SongsList>
       </div>
     )
   }
