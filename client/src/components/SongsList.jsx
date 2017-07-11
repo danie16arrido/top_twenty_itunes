@@ -5,15 +5,15 @@ export const SongsList = ( props ) => {
   if( !props.topsongs) return null;
 
   const songsToRender = props.topsongs.map( ( song, index ) => {
-    return <SongItem key={ index } song={ song } />
+    return <SongItem key={ index } song={ song } index={ index } />
   })
     
   
   
   return(
-    <div>
+    <ul id="songs-list">
       { songsToRender }
-    </div>
+    </ul>
   )
 
 }

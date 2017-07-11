@@ -10,7 +10,7 @@ class Container extends React.Component {
   }
 
   componentDidMount() {
-  const url = "https://itunes.apple.com/gb/rss/topsongs/limit=20/json"
+  const url = "https://itunes.apple.com/gb/rss/topsongs/limit=21/json"
   const request = new XMLHttpRequest();
   request.open( "GET", url );
   request.onload = () => {
@@ -26,7 +26,7 @@ class Container extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="container">
         <SongsList topsongs={ this.state.topTwentySongs }></SongsList>
       </div>
     )
